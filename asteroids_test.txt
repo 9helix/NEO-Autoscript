@@ -1,0 +1,3 @@
+Date       UT   *  R.A. (J2000) Decl.  Elong.  V        Motion     Object     Sun         Moon        Uncertainty
+            h m                                      "/min   P.A.  Azi. Alt.  Alt.  Phase Dist. Alt.
+
