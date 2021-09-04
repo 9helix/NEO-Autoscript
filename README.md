@@ -1,9 +1,9 @@
-# NEO-Autoscript
+# NEO-Autoscript <img src='https://image.flaticon.com/icons/png/512/547/547436.png' width='30'/>
 
 Collection of Python files for an automatized making of the scripts of the NEAs for observing that night.  
 &nbsp;
 
-# Requirements
+# Requirements <img src='https://image.flaticon.com/icons/png/512/4295/4295919.png' width='30'/>
 
 ## Required Python modules
 
@@ -16,10 +16,10 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 ## Other requirements
 
 - **Refer to [this link](https://translate.google.hr/?hl=hr&sl=hr&tl=en&text=pozovi%20se%20na&op=translate)**
-- **Browser (Chrome, Firefox, Edge, Internet Explorer, Safari, Opera)**
 
+- **Browser (Chrome, Firefox, Edge, Internet Explorer, Safari, Opera)**
 - **Browser driver;** (must be in PATH)
   &nbsp;  
   &nbsp;
 
-# How-To-Use
+# How-To-Use <img src='https://image.flaticon.com/icons/png/512/1321/1321639.png' width='30'/>
