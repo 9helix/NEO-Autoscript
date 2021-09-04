@@ -78,11 +78,11 @@ def exposure_def(mag):
 
 def batch_def(exposure):
     if exposure == 10:
-        img_num = 144
+        img_num = 24
     if exposure == 15:
-        img_num = 96
+        img_num = 24
     if exposure == 30:
-        img_num = 48
+        img_num = 24
     if exposure == 60:
         img_num = 24
     if exposure == 120:
@@ -93,7 +93,7 @@ def batch_def(exposure):
 
 
 #   ↓ TEXT PROCESSING ↓
-script = open('script_unprocessed.txt', 'r')
+script = open('Output\script_unprocessed.txt', 'r')
 content = script.read()
 script.close()
 
@@ -160,13 +160,13 @@ for asteroid in content_list:
 
 times_sorted = dict(sorted(times.items(), key=lambda item: item[1]))
 # print(times_sorted)
-test = open('test.txt', 'w')
+test = open(r'Output\test.txt', 'w')
 
 for i in times_sorted:
     test.write(i)
 test.close()
 asteroids = [top+'\n\n']
-excluded = []
+excluded = {}
 for asteroid in times_sorted:
     skip = False
     desig = asteroid[:asteroid.find('\n')]
@@ -227,25 +227,26 @@ for asteroid in times_sorted:
     if not skip:
         asteroids.append(asteroid)
     else:
-        excluded.append(asteroid)
+        excluded[asteroid[:asteroid.find(' ')]] = asteroid
 
 # print(asteroids)
-f = open('asteroids_test.txt', 'w')
+f = open('Output/asteroids_test.txt', 'w')
 for i in asteroids:
     f.write(i)
 f.close()
-f = open('asteroids_excluded.txt', 'w')
-for i in excluded:
+f = open('Output/asteroids_excluded.txt', 'w')
+for i in excluded.values():
     f.write(i)
 f.close()
 print('Attention! The following asteroids have high speeds: ')
 for i in fast:
-    print(i+"   " + fast[i])
-test = open('test_script.txt', 'w')
+    if i not in excluded:
+        print(i+"   " + fast[i])
+test = open('Output/test_script.txt', 'w')
 test.write(empty)
 test.close()
 if len(excluded) > 0:
-    print(f"\n{len(excluded)} asteroids didn't fit in the script. They have been moved another file.")
+    print(f"\n{len(excluded)} asteroids didn't fit in the script. They have been moved to another file.")
 else:
     print('All asteroids are in the script!')
 #   ↓ WRITING TO FILE ↓
@@ -255,8 +256,8 @@ script = open(f'test.txt', 'w')
 script.write(content)
 script.close()
 '''
-# webbrowser.open(f'{d1}test.txt') used when testing is finished
-# webbrowser.open(f'test.txt')
 
-done('Processing done!')
+# webbrowser.open(f'test.txt')
+print('\nProcessing done!')
+#done('Processing done!')
 # TODO: maybe at the end add function in which user can input asteroid name, and it will take himto the link of the uncertainty map for the asteroid, when acquiring data then, try to store the map links

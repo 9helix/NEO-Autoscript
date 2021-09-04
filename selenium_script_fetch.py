@@ -86,7 +86,7 @@ for map_link in map_links[1:]:
     if len(min_decimal) == 1:
         min_decimal = '0'+min_decimal
     time = hr_decimal+min_decimal
-    print(JDtime, time)
+    #print(JDtime, time)
     map_dict[obj+' '+time] = (map_link.get_attribute("href"))
 
 # print(map_list)
@@ -106,5 +106,5 @@ var.write('mag_dict='+str(mag_dict)+'\n')
 var.write('fetch_date = ' + "'" + fetch_date+"'\n")
 var.write(f'map_dict={map_dict}')
 var.close()
-
-done('Fetching data complete!')
+print('\nFetching data complete!')
+#done('Fetching data complete!')
