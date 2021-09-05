@@ -1,6 +1,6 @@
 # NEO-Autoscript <img src='https://image.flaticon.com/icons/png/512/547/547436.png' width='30'/>
 
-Collection of Python files for an automatized making of the scripts of the NEAs for observing that night.  
+Collection of Python files for an automatized making of the scripts of the NEAs for the observations.  
 &nbsp;
 
 # Requirements <img src='https://image.flaticon.com/icons/png/512/4295/4295919.png' width='30'/>
@@ -16,7 +16,7 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 - **Refer to [this link](https://www.selenium.dev/documentation/getting_started/installing_browser_drivers/)**
 
 - **Browser (Chrome, Firefox, Edge, Internet Explorer, Safari, Opera)**
-- **Browser driver;** (it is in "browser drivers" folder, must be in PATH location)
+- **Browser driver;**
   &nbsp;  
   &nbsp;
 
@@ -24,7 +24,10 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 
 ## Interactable files
 
-- **main;** for making a observation-ready script
-- **selenium_script_fetch;** for writing all asteroids to a file (unprocessed)
-- **config;** for configuring program settings
-- **map_fetch;** for opening specific uncertainty map in the browser
+- **main;** making an observation-ready script
+
+- **selenium_script_fetch;** fetcing data from MPC site
+- **config;** configuring program settings
+- **map_fetch;** opening specific uncertainty map in the browser
+
+## Instructions
