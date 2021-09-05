@@ -91,7 +91,7 @@ for map_link in map_links[1:]:
 
 # print(map_list)
 
-script = open(f'script_unprocessed.txt', 'w')
+script = open(f'Output/script_unprocessed.txt', 'w')
 script.write(content)
 script.close()
 driver.quit()

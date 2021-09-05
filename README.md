@@ -18,7 +18,7 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 - **Refer to [this link](https://translate.google.hr/?hl=hr&sl=hr&tl=en&text=pozovi%20se%20na&op=translate)**
 
 - **Browser (Chrome, Firefox, Edge, Internet Explorer, Safari, Opera)**
-- **Browser driver;** (must be in PATH)
+- **Browser driver;** (it is in "browser drivers" folder, must be in PATH location)
   &nbsp;  
   &nbsp;
 

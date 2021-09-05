@@ -4,6 +4,7 @@ import regex as re
 from success import *
 from config import *
 from math import *
+import os
 
 today = date.today()
 date = today.strftime("%Y-%m-%d")
@@ -27,7 +28,7 @@ if fetch_date != date:
 def timeAdd(obs_time):
     obs_hr = int(obs_time[:2])
     obs_min = int(obs_time[2:])
-    obs_min += ceil((obs_interval+exposure*24/60)/10)*10
+    obs_min += ceil((obs_interval+exposure*img_num/60)/10)*10
     #print(obs_hr, obs_min)
     while obs_min >= 60:
         obs_hr += 1
@@ -130,6 +131,7 @@ times = {}
 fast = {}
 empty = ''
 asteroids = {}
+all_asteroids = {}
 for asteroid in content_list:
     if asteroid[-1] != '.':
         desig = asteroid[:asteroid.find('\n')]
@@ -143,9 +145,10 @@ for asteroid in content_list:
             line_start = 0
             line_end = 0
             line_end = data.find('\n', line_start+1)
-            data = data.replace(data[line_end+1:], '\n')
-            line = data[line_start:line_end]
-
+            if line_end != -1:
+                data = data.replace(data[line_end+1:], '\n')
+                line = data[line_start:line_end]
+            # print(data)
             obs_time = data[11:15]  # earliest asteroids time
             obs_hr = int(obs_time[:2])
             obs_min = int(obs_time[2:])
@@ -156,6 +159,7 @@ for asteroid in content_list:
             asteroid = asteroid.replace('\n'+top2, '')
             asteroid += '\n\n'
             times[asteroid] = obs_total
+            all_asteroids[desig] = asteroid
 
 
 times_sorted = dict(sorted(times.items(), key=lambda item: item[1]))
@@ -182,6 +186,7 @@ for asteroid in times_sorted:
             obs_time_target = timeAdd(time)
             # print(obs_time_target)
         else:
+            print(desig, time, obs_time_target)
             target_loc = data.find(obs_time_target)
             if target_loc != -1:
                 data = data[target_loc-11:target_loc+102]
@@ -249,15 +254,11 @@ if len(excluded) > 0:
     print(f"\n{len(excluded)} asteroids didn't fit in the script. They have been moved to another file.")
 else:
     print('All asteroids are in the script!')
-#   ↓ WRITING TO FILE ↓
-'''
-# script = open(f'{d1}test.txt', 'w')
-script = open(f'test.txt', 'w')
-script.write(content)
-script.close()
-'''
 
-# webbrowser.open(f'test.txt')
+'''
+os.startfile(r'Output\asteroids_test.txt')
+if len(excluded) != 0:
+    os.startfile(r'Output\asteroids_excluded.txt')
 print('\nProcessing done!')
+'''
 #done('Processing done!')
-# TODO: maybe at the end add function in which user can input asteroid name, and it will take himto the link of the uncertainty map for the asteroid, when acquiring data then, try to store the map links
