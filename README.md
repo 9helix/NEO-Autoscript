@@ -10,12 +10,10 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 - **regex**
 
 - **selenium**
-- **playsound;** (optional)
-- **webbrowser**
 
 ## Other requirements
 
-- **Refer to [this link](https://translate.google.hr/?hl=hr&sl=hr&tl=en&text=pozovi%20se%20na&op=translate)**
+- **Refer to [this link](https://www.selenium.dev/documentation/getting_started/installing_browser_drivers/)**
 
 - **Browser (Chrome, Firefox, Edge, Internet Explorer, Safari, Opera)**
 - **Browser driver;** (it is in "browser drivers" folder, must be in PATH location)

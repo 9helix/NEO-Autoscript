@@ -1,10 +1,8 @@
 from datetime import date
-import webbrowser
 import regex as re
 from success import *
 from config import *
 from math import *
-import os
 
 today = date.today()
 date = today.strftime("%Y-%m-%d")
@@ -261,4 +259,4 @@ if len(excluded) != 0:
     os.startfile(r'Output\asteroids_excluded.txt')
 print('\nProcessing done!')
 '''
-#done('Processing done!')
+done('Processing done!')

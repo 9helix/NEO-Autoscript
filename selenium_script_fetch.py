@@ -1,4 +1,4 @@
-from selenium import webdriver
+from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import Select
 from datetime import date
 from success import *
@@ -9,7 +9,7 @@ intervals = {60: 1, 30: 2, 10: 3, 1: 4}
 row_num = 0
 
 #   ↓ DATA ACQUISITION ↓
-driver = webdriver.Chrome()
+driver = Chrome()
 
 driver.get('https://www.minorplanetcenter.net/iau/NEO/toconfirm_tabular.html')
 
@@ -106,5 +106,5 @@ var.write('mag_dict='+str(mag_dict)+'\n')
 var.write('fetch_date = ' + "'" + fetch_date+"'\n")
 var.write(f'map_dict={map_dict}')
 var.close()
-print('\nFetching data complete!')
-#done('Fetching data complete!')
+#print('\nFetching data complete!')
+done('Fetching data complete!')

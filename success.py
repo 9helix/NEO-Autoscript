@@ -1,5 +1,5 @@
 def done(message="Success!"):
-    from playsound import playsound
+    import winsound
     if message != None:
         print(f"\n{message}")
-    playsound('sound.mp3')
+    winsound.PlaySound(r"sound.wav", winsound.SND_FILENAME)

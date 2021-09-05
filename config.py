@@ -4,4 +4,5 @@ max_mag = 22           # maximum object magnitude
 min_alt = 20           # minimum object altitude
 obs_start = ''         # aproximated time of the start of the observation in UT in format HHMM; if blank, it uses the earliest avaiable time
 obs_interval = 5       # average time between observing two different objects in minutes
-min_speed = 10           # minimal speed in "/min for the asteroid to be classified as fast
+min_speed = 10         # minimal speed in "/min for the asteroid to be classified as fast
+# browser='Chrome'       # browser used for getting MPC data
