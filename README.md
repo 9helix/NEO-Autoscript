@@ -23,3 +23,10 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
   &nbsp;
 
 # How-To-Use <img src='https://image.flaticon.com/icons/png/512/1321/1321639.png' width='30'/>
+
+## Interactable files
+
+- **main;** for making a observation-ready script
+- **selenium_script_fetch;** for writing all asteroids to a file (unprocessed)
+- **config;** for configuring program settings
+- **map_fetch;** for opening specific uncertainty map in the browser
