@@ -5,6 +5,8 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 
 # Requirements <img src='https://image.flaticon.com/icons/png/512/4295/4295919.png' width='30'/>
 
+**Python 3.6 or newer**
+
 ## Required Python modules
 
 - **regex**
@@ -16,7 +18,7 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 - **Refer to [this link](https://www.selenium.dev/documentation/getting_started/installing_browser_drivers/)**
 
 - **Browser (Chrome, Firefox, Edge, Internet Explorer, Safari, Opera)**
-- **Browser driver;**
+- **Browser driver**
   &nbsp;  
   &nbsp;
 

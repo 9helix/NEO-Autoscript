@@ -1,6 +1,6 @@
 from datetime import date
 import regex as re
-from success import *
+from src.success import *
 from config import *
 from math import *
 
@@ -17,7 +17,7 @@ cacheFile.close()
 if cont == '':
     from selenium_script_fetch import *
 else:
-    from shared_var import *
+    from src.shared_var import *
 
 if fetch_date != date:
     from selenium_script_fetch import *
@@ -39,7 +39,6 @@ def timeAdd(obs_time):
         obs_min = '0'+str(obs_min)
     time_target = str(obs_hr)+str(obs_min)
     return time_target
-    print(time_target)
 
 
 def custom_list_sort(start):

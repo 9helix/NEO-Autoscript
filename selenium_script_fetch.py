@@ -1,7 +1,7 @@
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import Select
 from datetime import date
-from success import *
+from src.success import *
 from config import *
 
 
