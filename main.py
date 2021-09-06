@@ -1,9 +1,9 @@
 from datetime import date
 import regex as re
-from src.success import *
 from config import *
 from math import *
 import os
+from src.success import *
 
 today = date.today()
 date = today.strftime("%Y-%m-%d")
@@ -18,7 +18,7 @@ cacheFile.close()
 if cont == '':
     from script_fetch import *
 else:
-    from src.shared_var import *
+    from src.shared_var import mag_dict, fetch_date
 
 if fetch_date != date:
     from script_fetch import *
@@ -257,10 +257,11 @@ if len(excluded) > 0:
 else:
     print('\nAll asteroids are in the script!')
 
-
-os.startfile(r'output\asteroids_test.txt')
-if len(excluded) != 0:
-    os.startfile(r'output\asteroids_excluded.txt')
+if open_script:
+    os.startfile(r'output\asteroids_test.txt')
+if open_excluded:
+    if len(excluded) != 0:
+        os.startfile(r'output\asteroids_excluded.txt')
 #print('\nProcessing done!')
 
 done('Processing done!')

@@ -1,4 +1,4 @@
-from src.shared_var import *
+from src.shared_var import map_dict
 import webbrowser
 
 desig = input(
