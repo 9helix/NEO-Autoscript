@@ -3,6 +3,7 @@ import regex as re
 from src.success import *
 from config import *
 from math import *
+import os
 
 today = date.today()
 date = today.strftime("%Y-%m-%d")
@@ -10,17 +11,17 @@ year = date[:4]
 month = date[5:7]
 day = date[8:]
 
-cacheFile = open("shared_var.py", 'r')
+cacheFile = open("src/shared_var.py", 'r')
 cont = cacheFile.read()
 cacheFile.close()
 
 if cont == '':
-    from selenium_script_fetch import *
+    from script_fetch import *
 else:
     from src.shared_var import *
 
 if fetch_date != date:
-    from selenium_script_fetch import *
+    from script_fetch import *
 
 
 def timeAdd(obs_time):
@@ -91,7 +92,7 @@ def batch_def(exposure):
 
 
 #   ↓ TEXT PROCESSING ↓
-script = open('Output\script_unprocessed.txt', 'r')
+script = open('output\script_unprocessed.txt', 'r')
 content = script.read()
 script.close()
 
@@ -136,9 +137,6 @@ for asteroid in content_list:
 
         if desig in mag_dict and '\n\n \n' != asteroid and data != ' ':
             # print(f'{desig} began processing')
-            speed = float(data[53:58].strip())
-            if speed >= 10:
-                fast[desig] = str(speed)+' "/min'
             line_start = 0
             line_end = 0
             line_end = data.find('\n', line_start+1)
@@ -161,7 +159,7 @@ for asteroid in content_list:
 
 times_sorted = dict(sorted(times.items(), key=lambda item: item[1]))
 # print(times_sorted)
-test = open(r'Output\test.txt', 'w')
+test = open(r'output\test.txt', 'w')
 
 for i in times_sorted:
     test.write(i)
@@ -183,7 +181,7 @@ for asteroid in times_sorted:
             obs_time_target = timeAdd(time)
             # print(obs_time_target)
         else:
-            print(desig, time, obs_time_target)
+            #print(desig, time, obs_time_target)
             target_loc = data.find(obs_time_target)
             if target_loc != -1:
                 data = data[target_loc-11:target_loc+102]
@@ -203,6 +201,7 @@ for asteroid in times_sorted:
                 img_num = batch_def(exposure)
                 skip = True
     else:
+
         if len(asteroids) == 1:
             obs_time_target = obs_start
         target_loc = data.find(obs_time_target)
@@ -223,6 +222,9 @@ for asteroid in times_sorted:
             exposure = exposure_def(mag)
             img_num = batch_def(exposure)
             skip = True
+    speed = float(data[53:58].strip())
+    if speed >= min_speed:
+        fast[desig] = str(speed)+' "/min'
     img_batch = f'  {img_num} x {exposure} sec'
     desig += img_batch
     asteroid = desig+'\n'+data+'\n\n'
@@ -231,12 +233,14 @@ for asteroid in times_sorted:
     else:
         excluded[asteroid[:asteroid.find(' ')]] = asteroid
 
+#   ↓ FILE WRITING ↓
+
 # print(asteroids)
-f = open('Output/asteroids_test.txt', 'w')
+f = open('output/asteroids_test.txt', 'w')
 for i in asteroids:
     f.write(i)
 f.close()
-f = open('Output/asteroids_excluded.txt', 'w')
+f = open('output/asteroids_excluded.txt', 'w')
 for i in excluded.values():
     f.write(i)
 f.close()
@@ -244,18 +248,19 @@ print('Attention! The following asteroids have high speeds: ')
 for i in fast:
     if i not in excluded:
         print(i+"   " + fast[i])
-test = open('Output/test_script.txt', 'w')
+test = open('output/test_script.txt', 'w')
 test.write(empty)
 test.close()
 if len(excluded) > 0:
-    print(f"\n{len(excluded)} asteroids didn't fit in the script. They have been moved to another file.")
+    print(f'\n{len(asteroids)} asteroids are in the script!')
+    print(f"{len(excluded)} asteroids didn't fit in the script & have been moved to excluded.txt file.")
 else:
-    print('All asteroids are in the script!')
+    print('\nAll asteroids are in the script!')
 
-'''
-os.startfile(r'Output\asteroids_test.txt')
+
+os.startfile(r'output\asteroids_test.txt')
 if len(excluded) != 0:
-    os.startfile(r'Output\asteroids_excluded.txt')
-print('\nProcessing done!')
-'''
+    os.startfile(r'output\asteroids_excluded.txt')
+#print('\nProcessing done!')
+
 done('Processing done!')

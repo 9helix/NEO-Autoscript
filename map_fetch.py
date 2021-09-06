@@ -1,4 +1,4 @@
-from shared_var import *
+from src.shared_var import *
 import webbrowser
 
 desig = input(

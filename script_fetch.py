@@ -91,7 +91,9 @@ for map_link in map_links[1:]:
 
 # print(map_list)
 
-script = open(f'Output/script_unprocessed.txt', 'w')
+#   ↓ FILE WRITING ↓
+
+script = open(f'output/script_unprocessed.txt', 'w')
 script.write(content)
 script.close()
 driver.quit()
@@ -101,10 +103,9 @@ fetch_date = today.strftime("%Y-%m-%d")
 
 mag_dict = dict(sorted(mag_dict.items(), key=lambda item: item[1]))
 print(len(mag_dict), 'suitable asteorids found.')
-var = open('shared_var.py', 'w')
+var = open('src/shared_var.py', 'w')
 var.write('mag_dict='+str(mag_dict)+'\n')
 var.write('fetch_date = ' + "'" + fetch_date+"'\n")
 var.write(f'map_dict={map_dict}')
 var.close()
-#print('\nFetching data complete!')
 done('Fetching data complete!')
