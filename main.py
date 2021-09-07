@@ -1,3 +1,4 @@
+# TODO: try putting interactable files in tools/ and importing via sys
 from datetime import date
 import regex as re
 from config import *
