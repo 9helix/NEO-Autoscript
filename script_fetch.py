@@ -1,5 +1,5 @@
 from src.success import *
-from selenium.webdriver import Chrome
+from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from datetime import date
 from config import *
@@ -7,9 +7,11 @@ from config import *
 
 intervals = {60: 1, 30: 2, 10: 3, 1: 4}
 row_num = 0
+browsers = {'Chrome': webdriver.Chrome, 'Firefox': webdriver.Firefox, 'Edge': webdriver.Edge,
+            'Ie': webdriver.Ie, 'Safari': webdriver.Safari, 'Opera': webdriver.Opera}
 
 #   ↓ DATA ACQUISITION ↓
-driver = Chrome()
+driver = browsers[browser]()
 
 driver.get('https://www.minorplanetcenter.net/iau/NEO/toconfirm_tabular.html')
 

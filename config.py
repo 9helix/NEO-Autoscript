@@ -7,4 +7,4 @@ obs_interval = 5       # average time between observing two different objects in
 min_speed = 10         # minimal speed of the asteroid in "/min for it to be classified as fast in the script
 open_script = True     # auto-opens script when main.py finishes
 open_excluded = True   # auto-opens file with excluded asteroids when main.py finishes
-# browser='Chrome'     # browser used for getting MPC data
+browser = 'Chrome'     # browser used for getting MPC data; 'Chrome', 'Firefox', 'Edge', 'Ie', 'Safari', 'Opera'
