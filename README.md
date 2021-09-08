@@ -15,9 +15,9 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 
 ## Other requirements
 
-- **Chrome browser**
+- **Supported Browser;** (Chrome, Firefox, Edge, Internet Explorer, Safari, Opera)
 
-- **Chrome driver**
+- **Browser driver**
   &nbsp;  
   &nbsp;
 
@@ -33,7 +33,7 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 
 ## Instructions
 
-Firstly, you'll need a Chrome driver executable placed in your PATH, I've already put the driver for the Chrome 93 version in the `browser_driver` folder, but you can download any other at [this link](https://sites.google.com/a/chromium.org/chromedriver/downloads).
+Firstly, you'll need a driver executable for you browser you wish to use placed in your PATH. You can download the needed driver [here](https://www.selenium.dev/documentation/getting_started/installing_browser_drivers/).
 
 In the `config.py` file you can configure the settings used in the program. Default values are already written.<br>
 Next, `script_fetch.py` is used to access the MPC site using the browser and the `selenium` module. By running that file, it will open a separate browser window through which it will navigate to get the list of all the available asteroids. After it's done, the window will close.<br>
