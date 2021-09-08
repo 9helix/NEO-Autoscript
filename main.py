@@ -93,7 +93,7 @@ def batch_def(exposure):
 
 
 #   ↓ TEXT PROCESSING ↓
-script = open('output\script_unprocessed.txt', 'r')
+script = open(f'output\{date}-raw.txt', 'r')
 content = script.read()
 script.close()
 
@@ -158,11 +158,11 @@ for asteroid in content_list:
 
 times_sorted = dict(sorted(times.items(), key=lambda item: item[1]))
 # print(times_sorted)
-test = open(r'output\test.txt', 'w')
-
+test = open(f'output\{date}-time-sorted.txt', 'w')
 for i in times_sorted:
     test.write(i)
 test.close()
+
 asteroids = [top+'\n\n']
 excluded = {}
 for asteroid in times_sorted:
