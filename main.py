@@ -126,9 +126,7 @@ img_batch = '  24 x 60 sec'
 limit = len(content_list)
 
 times = {}
-
 fast = {}
-empty = ''
 asteroids = {}
 all_asteroids = {}
 for asteroid in content_list:
@@ -237,11 +235,11 @@ for asteroid in times_sorted:
 #   ↓ FILE WRITING ↓
 
 # print(asteroids)
-f = open('output/asteroids_test.txt', 'w')
+f = open(f'output/{date}-log.txt', 'w')
 for i in asteroids:
     f.write(i)
 f.close()
-f = open('output/asteroids_excluded.txt', 'w')
+f = open(f'output/{date}-excluded.txt', 'w')
 for i in excluded.values():
     f.write(i)
 f.close()
@@ -249,9 +247,6 @@ print('Attention! The following asteroids have high speeds: ')
 for i in fast:
     if i not in excluded:
         print(i+"   " + fast[i])
-test = open('output/test_script.txt', 'w')
-test.write(empty)
-test.close()
 if len(excluded) > 0:
     print(f'\n{len(asteroids)} asteroids are in the script!')
     print(f"{len(excluded)} asteroids didn't fit in the script & have been moved to excluded.txt file.")
@@ -259,10 +254,10 @@ else:
     print('\nAll asteroids are in the script!')
 
 if open_script:
-    os.startfile(r'output\asteroids_test.txt')
+    os.startfile(f'output\{date}-log.txt')
 if open_excluded:
     if len(excluded) != 0:
-        os.startfile(r'output\asteroids_excluded.txt')
+        os.startfile(f'output\{date}-excluded.txt')
 #print('\nProcessing done!')
 
 done('Processing done!')

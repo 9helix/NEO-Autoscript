@@ -1,6 +1,4 @@
 .vscode/
 __pycache__/
 shared_var.py
-output/asteroids_excluded.txt
-output/script_unprocessed.txt
-output/asteroids_test.txt
+output/
