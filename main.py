@@ -93,7 +93,7 @@ def batch_def(exposure):
 
 
 #   ↓ TEXT PROCESSING ↓
-script = open(f'output\{date}-raw.txt', 'r')
+script = open(fr'output\{date}-raw.txt', 'r')
 content = script.read()
 script.close()
 
