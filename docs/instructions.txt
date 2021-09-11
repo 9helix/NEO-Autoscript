@@ -1,0 +1,10 @@
+obs_code         -   observatory code
+ephem_interval   -   ephemeris interval in minutes 60/30/10/1
+max_mag          -   maximum object magnitude
+min_alt          -   minimum object altitude
+obs_start        -   aproximated time of the start of the observation in UT in format HHMM; if blank, it uses the earliest avaiable time
+obs_interval     -   average time between observing two different objects in minutes
+min_speed        -   minimal speed of the asteroid in "/min for it to be classified as fast in the script
+open_script      -   auto-opens script when main.py finishes
+open_excluded    -   auto-opens file with excluded asteroids when main.py finishes
+browser          -   browser used for getting MPC data; Chrome, Firefox, Edge, Ie, Safari, Opera

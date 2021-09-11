@@ -2,7 +2,8 @@ from src.success import *
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from datetime import date
-from config import *
+from src.config import *
+import os
 
 
 intervals = {60: 1, 30: 2, 10: 3, 1: 4}
@@ -15,10 +16,11 @@ driver = browsers[browser]()
 
 driver.get('https://www.minorplanetcenter.net/iau/NEO/toconfirm_tabular.html')
 
-obs_box = driver.find_element_by_xpath(
-    '//*[@id="main"]/form/p[8]/input[3]')
-obs_box.clear()
-obs_box.send_keys('L01')
+if obs_code != "":
+    obs_box = driver.find_element_by_xpath(
+        '//*[@id="main"]/form/p[8]/input[3]')
+    obs_box.clear()
+    obs_box.send_keys(f'{obs_code}')
 
 supress = Select(driver.find_element_by_name('sun'))
 supress.select_by_value('n')
@@ -98,7 +100,13 @@ for map_link in map_links[1:]:
 today = date.today()
 fetch_date = today.strftime("%Y-%m-%d")
 
-script = open(f'output/{fetch_date}-raw.txt', 'w')
+parent_dir = os.getcwd()+"\output"
+directory = f"{fetch_date}"
+path = os.path.join(parent_dir, directory)
+# print(path)
+os.mkdir(path)
+
+script = open(f'output/{fetch_date}/{fetch_date}-raw.txt', 'w')
 script.write(content)
 script.close()
 driver.quit()

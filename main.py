@@ -1,7 +1,7 @@
 # TODO: try putting interactable files in tools/ and importing via sys
 from datetime import date
 import regex as re
-from config import *
+from src.config import *
 from math import *
 import os
 from src.success import *
@@ -93,7 +93,7 @@ def batch_def(exposure):
 
 
 #   ↓ TEXT PROCESSING ↓
-script = open(fr'output\{date}-raw.txt', 'r')
+script = open(fr'output\{date}\{date}-raw.txt', 'r')
 content = script.read()
 script.close()
 
@@ -158,7 +158,7 @@ for asteroid in content_list:
 
 times_sorted = dict(sorted(times.items(), key=lambda item: item[1]))
 # print(times_sorted)
-test = open(f'output\{date}-time-sorted.txt', 'w')
+test = open(f'output\{date}\{date}-time-sorted.txt', 'w')
 for i in times_sorted:
     test.write(i)
 test.close()
@@ -235,11 +235,11 @@ for asteroid in times_sorted:
 #   ↓ FILE WRITING ↓
 
 # print(asteroids)
-f = open(f'output/{date}-log.txt', 'w')
+f = open(f'output/{date}/{date}-log.txt', 'w')
 for i in asteroids:
     f.write(i)
 f.close()
-f = open(f'output/{date}-excluded.txt', 'w')
+f = open(f'output/{date}/{date}-excluded.txt', 'w')
 for i in excluded.values():
     f.write(i)
 f.close()
@@ -254,10 +254,10 @@ else:
     print('\nAll asteroids are in the script!')
 
 if open_script:
-    os.startfile(f'output\{date}-log.txt')
+    os.startfile(f'output\{date}\{date}-log.txt')
 if open_excluded:
     if len(excluded) != 0:
-        os.startfile(f'output\{date}-excluded.txt')
+        os.startfile(f'output\{date}\{date}-excluded.txt')
 #print('\nProcessing done!')
 
 done('Processing done!')
