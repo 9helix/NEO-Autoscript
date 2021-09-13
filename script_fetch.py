@@ -100,11 +100,14 @@ for map_link in map_links[1:]:
 today = date.today()
 fetch_date = today.strftime("%Y-%m-%d")
 
-parent_dir = os.getcwd()+"\output"
-directory = f"{fetch_date}"
-path = os.path.join(parent_dir, directory)
-# print(path)
-os.mkdir(path)
+try:
+    parent_dir = os.getcwd()+"\output"
+    directory = f"{fetch_date}"
+    path = os.path.join(parent_dir, directory)
+    # print(path)
+    os.mkdir(path)
+except FileExistsError:
+    pass
 
 script = open(f'output/{fetch_date}/{fetch_date}-raw.txt', 'w')
 script.write(content)
@@ -119,3 +122,4 @@ var.write('fetch_date = ' + "'" + fetch_date+"'\n")
 var.write('map_dict = ' + str(map_dict))
 var.close()
 done('Fetching data complete!')
+input("\nPress ENTER to close...")

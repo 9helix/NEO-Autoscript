@@ -261,3 +261,4 @@ if open_excluded:
 #print('\nProcessing done!')
 
 done('Processing done!')
+input("\nPress ENTER to close...")
