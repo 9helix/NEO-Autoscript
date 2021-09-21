@@ -23,6 +23,7 @@ else:
 
 if fetch_date != date:
     from script_fetch import *
+    from src.shared_var import mag_dict, fetch_date
 
 
 def timeAdd(obs_time):
@@ -93,7 +94,7 @@ def batch_def(exposure):
 
 
 #   ↓ TEXT PROCESSING ↓
-script = open(fr'output\{date}\{date}-raw.txt', 'r')
+script = open(f'output\{date}\{date}-raw.txt', 'r')
 content = script.read()
 script.close()
 
