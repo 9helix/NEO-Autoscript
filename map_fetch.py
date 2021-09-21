@@ -9,4 +9,4 @@ try:
     webbrowser.open(link)
 except KeyError:
     print('Could not find desired object.')
-input("\nPress ENTER to close...")
+#input("\nPress ENTER to close...")

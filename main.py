@@ -130,6 +130,8 @@ times = {}
 fast = {}
 asteroids = {}
 all_asteroids = {}
+prefix = "* "
+
 for asteroid in content_list:
     if asteroid[-1] != '.':
         desig = asteroid[:asteroid.find('\n')]
@@ -227,7 +229,7 @@ for asteroid in times_sorted:
         fast[desig] = str(speed)+' "/min'
     img_batch = f'  {img_num} x {exposure} sec'
     desig += img_batch
-    asteroid = desig+'\n'+data+'\n\n'
+    asteroid = prefix+desig+'\n'+data+'\n\n'
     if not skip:
         asteroids.append(asteroid)
     else:
@@ -240,14 +242,18 @@ f = open(f'output/{date}/{date}-log.txt', 'w')
 for i in asteroids:
     f.write(i)
 f.close()
+
 f = open(f'output/{date}/{date}-excluded.txt', 'w')
 for i in excluded.values():
     f.write(i)
 f.close()
-print('Attention! The following asteroids have high speeds: ')
-for i in fast:
-    if i not in excluded:
-        print(i+"   " + fast[i])
+
+if fast != {}:
+    print('Attention! The following asteroids have high speeds: ')
+    for i in fast:
+        if i not in excluded:
+            print(i+"   " + fast[i])
+
 if len(excluded) > 0:
     print(f'\n{len(asteroids)} asteroids are in the script!')
     print(f"{len(excluded)} asteroids didn't fit in the script & have been moved to excluded.txt file.")
@@ -261,5 +267,5 @@ if open_excluded:
         os.startfile(f'output\{date}\{date}-excluded.txt')
 #print('\nProcessing done!')
 
-done('Processing done!')
+#done('Processing done!')
 input("\nPress ENTER to close...")
