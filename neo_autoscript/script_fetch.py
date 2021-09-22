@@ -1,6 +1,10 @@
 import requests
+from datetime import datetime
 from html.parser import HTMLParser
 from xml.etree import ElementTree
+from urllib.parse import urlparse, parse_qs
+
+from neo_autoscript.utils import PersistentData, jd_to_hhmmss
 from neo_autoscript.config import Settings, NEOCONFIRM_URL, NEOCONFIRM_CGI
 
 
@@ -67,6 +71,32 @@ class TableParser(HTMLParser):
             for row in rows
         ]
 
+class ResponseParser(HTMLParser):
+
+    def __init__(self):
+        super().__init__(convert_charrefs=False)
+        self.prev_link = None
+        self.content = []
+        self.links = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'a' and 'href' in attrs[0][0]:
+            self.prev_link = attrs[0][1]
+
+    def handle_data(self, data):
+        if data == 'Map':
+            self.links.append(self.prev_link)
+        self.content.append(data)
+
+    def to_str(self):
+        return ''.join(self.content)
+
+    def parse_links(self):
+        return [
+            (qs['Obj'][0], qs['JD'][0]) for qs in
+            map(lambda i: parse_qs(i.query), map(urlparse, self.links))
+        ]
+
 
 # Find and parse table on NEO confirmation page
 tp = TableParser({'class': 'tablesorter'})
@@ -100,5 +130,20 @@ form_headers = {
 # Send query to CGI endpoint
 response = requests.post(NEOCONFIRM_CGI, data=form_data, headers=form_headers)
 
-# TODO: rewrite rest of script
-open('neocp.html', 'w').write(response.text)
+# Collect uncertainty map URLs and filter tags from HTML text
+rp = ResponseParser()
+rp.feed(response.text)
+response_text = rp.to_str()
+jd_list = rp.parse_links()
+
+# Store processed data
+now = datetime.now().strftime('%Y-%m-%d')
+
+PersistentData.fetch_date = now
+PersistentData.mag_dict = {
+    record['Temp Desig']: mag
+    for record in table
+    for mag in [float(record['V'] or 0)]
+    if mag and mag <= Settings.max_mag
+}
+PersistentData.map_dict = {}
