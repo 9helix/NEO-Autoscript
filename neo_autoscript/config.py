@@ -4,7 +4,8 @@ from enum import Enum
 NEOCONFIRM_URL = 'https://www.minorplanetcenter.net/iau/NEO/toconfirm_tabular.html'
 NEOCONFIRM_CGI = 'https://cgi.minorplanetcenter.net/cgi-bin/confirmeph2.cgi'
 
-DATA_FILE = './NEO_data.pkl'
+DATA_FILE = './output/NEO_data.pkl'
+DATA_DIR = './output'
 
 class EphemInterval(int, Enum):
 

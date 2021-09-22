@@ -1,11 +1,11 @@
-import requests
+import os, requests
 from datetime import datetime
 from html.parser import HTMLParser
 from xml.etree import ElementTree
 from urllib.parse import urlparse, parse_qs
 
 from neo_autoscript.utils import PersistentData, jd_to_hhmmss
-from neo_autoscript.config import Settings, NEOCONFIRM_URL, NEOCONFIRM_CGI
+from neo_autoscript.config import Settings, DATA_DIR, NEOCONFIRM_URL, NEOCONFIRM_CGI
 
 
 class TableParser(HTMLParser):
@@ -134,10 +134,15 @@ response = requests.post(NEOCONFIRM_CGI, data=form_data, headers=form_headers)
 rp = ResponseParser()
 rp.feed(response.text)
 response_text = rp.to_str()
-jd_list = rp.parse_links()
+qs_list = rp.parse_links()
 
 # Store processed data
 now = datetime.now().strftime('%Y-%m-%d')
+path = os.path.join(DATA_DIR, now, f'{now}-raw.txt')
+
+os.makedirs(os.path.dirname(path), exist_ok=True)
+with open(path, 'wt') as f:
+    f.write(response_text)
 
 PersistentData.fetch_date = now
 PersistentData.mag_dict = {
@@ -146,4 +151,7 @@ PersistentData.mag_dict = {
     for mag in [float(record['V'] or 0)]
     if mag and mag <= Settings.max_mag
 }
-PersistentData.map_dict = {}
+PersistentData.map_dict = {
+    f'{qs[0]} {jd_to_hhmmss(qs[1])}': link
+    for qs, link in zip(qs_list, rp.links)
+}
