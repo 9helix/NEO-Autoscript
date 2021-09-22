@@ -1,9 +1,12 @@
 from enum import Enum
 
+
 NEOCONFIRM_URL = 'https://www.minorplanetcenter.net/iau/NEO/toconfirm_tabular.html'
 NEOCONFIRM_CGI = 'https://cgi.minorplanetcenter.net/cgi-bin/confirmeph2.cgi'
 
-class EphemInterval(Enum):
+DATA_FILE = './NEO_data.pkl'
+
+class EphemInterval(int, Enum):
 
     MINUTES_60 = 0
     MINUTES_30 = 1
@@ -13,7 +16,7 @@ class EphemInterval(Enum):
 class Settings:
 
     def __init__(self, **kwargs):
-        self.__dict__.update(kwargs)
+        type(self).__dict__.update(kwargs)
 
     obs_code = 'L01'
     obs_start = None
