@@ -1,0 +1,4 @@
+AutoScript - runs the main file which runs script_fetch (if needed), processes and outputs the generated files
+Fetch Data - runs the script_fetch.py which gathers the asteroid data from the MPC site 
+Open Map   - runs the file which will open the map for the inputed object and time in your browser
+Open HTML  - opens the HTML file of all asteroids in your default app for HTML

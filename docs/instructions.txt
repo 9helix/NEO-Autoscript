@@ -7,4 +7,3 @@ obs_interval     -   average time between observing two different objects in min
 min_speed        -   minimal speed of the asteroid in "/min for it to be classified as fast in the script
 open_script      -   auto-opens script when main.py finishes
 open_excluded    -   auto-opens file with excluded asteroids when main.py finishes
-browser          -   browser used for getting MPC data; Chrome, Firefox, Edge, Ie, Safari, Opera
