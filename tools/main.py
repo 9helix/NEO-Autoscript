@@ -1,14 +1,11 @@
-# TODO: try putting interactable files in tools/ and importing via sys
-
-from datetime import date
 from math import *
+from datetime import date
 import os
-import pickle
 import sys
 cwd = os.getcwd()
 sys.path.insert(1, cwd+'\src')
+from utils import PersistentData
 from config import Settings, DATA_DIR
-
 
 today = date.today()
 date = today.strftime("%Y-%m-%d")
@@ -17,14 +14,11 @@ month = date[5:7]
 day = date[8:]
 
 try:
-    with open('output/NEO_data.pkl', 'rb') as f:
-        NEO_data = pickle.load(f)
-
+    if PersistentData.fetch_date != date:
+        from script_fetch import *
 except:
     from script_fetch import *
-
-if NEO_data['fetch_date'] != date:
-    from script_fetch import *
+mag_dict=PersistentData.mag_dict
 
 
 def timeAdd(obs_time):
@@ -64,7 +58,6 @@ def custom_list_sort(start):
 
 
 def exposure_def(mag):
-    # global exposure
     if mag < 18.5:
         exposure = 10
     if 18.5 <= mag < 20:
@@ -179,7 +172,7 @@ for asteroid in content_list:
         desig = asteroid[1:asteroid.find('\n')]
         data = asteroid[asteroid.find(f'{year}'):]
 
-        if desig in NEO_data['mag_dict'] and asteroid.find(f'{year}') != -1 and data != asteroid[len(asteroid)-1]:
+        if desig in mag_dict and asteroid.find(f'{year}') != -1 and data != asteroid[len(asteroid)-1]:
             #print('\n' in data)
             #line_end = data.find('\n')
             #data = data.replace(data[line_end+1:], '\n')
