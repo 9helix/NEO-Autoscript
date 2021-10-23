@@ -1,11 +1,13 @@
-from math import *
-from datetime import date
+# TODO: mark asteroids with ! as "attention needed" or similar and print them at the end, maybe even to add them all to script
 import os
 import sys
 cwd = os.getcwd()
 sys.path.insert(1, cwd+'\src')
-from utils import PersistentData
 from config import Settings, DATA_DIR
+from utils import PersistentData
+from math import *
+from datetime import date
+
 
 today = date.today()
 date = today.strftime("%Y-%m-%d")
@@ -18,7 +20,7 @@ try:
         from script_fetch import *
 except:
     from script_fetch import *
-mag_dict=PersistentData.mag_dict
+mag_dict = PersistentData.mag_dict
 
 
 def timeAdd(obs_time):
