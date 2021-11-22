@@ -28,5 +28,5 @@ class Settings:
     max_mag = 22
     min_alt = 20
     min_speed = 10
-    post_open_script = True
-    post_open_excluded = True
+    post_open_script = True  
+    post_open_excluded = True  

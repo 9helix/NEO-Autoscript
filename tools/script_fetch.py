@@ -102,7 +102,7 @@ class ResponseParser(HTMLParser):
             map(lambda i: parse_qs(i.query), map(urlparse, self.links))
         ]
 
-
+print('Fetching data...')
 # Find and parse table on NEO confirmation page
 tp = TableParser({'class': 'tablesorter'})
 tp.feed(requests.get(NEOCONFIRM_URL).text)
@@ -152,6 +152,7 @@ response_text = rp.to_str()
 qs_list = rp.parse_links()
 
 # Store processed data
+print('Writing data...')
 now = datetime.now().strftime('%Y-%m-%d')
 path = os.path.join(DATA_DIR, now, f'{now}-raw.txt')
 
@@ -179,4 +180,4 @@ PersistentData.map_dict = {
     for qs, link in zip(qs_list, rp.links)
 }
 print('Fetching data complete!')
-input("\nPress ENTER to close...")
+input("\nPress ENTER to continue...")

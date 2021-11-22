@@ -105,6 +105,7 @@ def split(string, delimiter):
 
 
 #   ↓ TEXT PROCESSING ↓
+print('Processing data...')
 script = open(f'output\{date}\{date}-raw.txt', 'r')
 content = script.read()
 script.close()
@@ -264,7 +265,7 @@ for asteroid in times_sorted:
         excluded.append(asteroid[:len(asteroid)-2])
 # print(excluded)
 #   ↓ FILE WRITING ↓
-
+print('Writing data...')
 # print(asteroids)
 f = open(f'output/{date}/{date}-log.txt', 'w')
 for i in asteroids:
@@ -293,6 +294,6 @@ if Settings.post_open_script:
 if Settings.post_open_excluded:
     if len(excluded) != 0:
         os.startfile(f'output\{date}\{date}-excluded.txt')
-#print('\nProcessing done!')
+print('\nProcessing done!')
 
-input("\nPress ENTER to close...")
+input("\nPress ENTER to continue...")
