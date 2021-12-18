@@ -1,6 +1,7 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/9helix/NEO-Autoscript?label=Release)
+![GitHub release (latest by date)](https://img.shields.io/github/v/tag/9helix/NEO-Autoscript?color=gren&label=Release)
 ![GitHub repo size](https://img.shields.io/github/repo-size/9helix/NEO-Autoscript?label=Size)
+![GitHub license](https://img.shields.io/github/license/9helix/NEO-Autoscript)
 
 
 # NEO-Autoscript <img src='https://image.flaticon.com/icons/png/512/547/547436.png' width='30'/>
