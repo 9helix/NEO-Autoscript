@@ -15,7 +15,7 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 
 Optional - **.NET Framework**
 
-# Getting Started <img src='https://cdn-icons-png.flaticon.com/512/1195/1195017.png' width='30'/>
+# Getting Started <img src='https://cdn-icons-png.flaticon.com/512/1321/1321639.png' width='30'/>
 
 ## Interactable files
 
