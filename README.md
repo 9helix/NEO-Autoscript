@@ -9,7 +9,7 @@
 Collection of Python files for an automatized making of the scripts of the NEAs for the observations.  
 &nbsp;
 
-# Requirements <img src='https://image.flaticon.com/icons/png/512/4295/4295919.png' width='30'/>
+# Requirements <img src='https://cdn-icons-png.flaticon.com/512/4295/4295919.png' width='30'/>
 
 **Python 3.6 or newer**
 
