@@ -4,7 +4,7 @@
 ![GitHub license](https://img.shields.io/github/license/9helix/NEO-Autoscript)
 
 
-# NEO-Autoscript <img src='https://image.flaticon.com/icons/png/512/547/547436.png' width='30'/>
+# NEO-Autoscript <img src='https://cdn-icons-png.flaticon.com/512/547/547436.png' width='30'/>
 
 Collection of Python files for an automatized making of the scripts of the NEAs for the observations.  
 &nbsp;
@@ -15,7 +15,7 @@ Collection of Python files for an automatized making of the scripts of the NEAs 
 
 Optional - **.NET Framework**
 
-# Getting Started <img src='https://image.flaticon.com/icons/png/512/1321/1321639.png' width='30'/>
+# Getting Started <img src='https://cdn-icons-png.flaticon.com/512/1195/1195017.png' width='30'/>
 
 ## Interactable files
 
@@ -34,7 +34,7 @@ Also, `map_fetch.py` is used to open in a browser an uncertainty map of a desire
 There will also be created `neocp.html` if you want to view the full list of asteroids with all their map links.<br>
 You can find all outputed files in the `output` folder, they are their furtherly sorted in subfolders by date.
 
-# Contact <img src='https://image.flaticon.com/icons/png/512/3062/3062634.png' width='30'/>
+# Contact <img src='https://cdn-icons-png.flaticon.com/512/3062/3062634.png' width='30'/>
 
 If you have any questions, issues or possible improvement suggestions about this project, feel free to contact me.
 
